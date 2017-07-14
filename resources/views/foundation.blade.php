@@ -1,4 +1,4 @@
 @extends('layouts.main')
 @section('content')
-	<h1>Hi!</h1>
+	<h1>Hi {{{ $name }}} !</h1>
 @stop

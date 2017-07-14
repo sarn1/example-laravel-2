@@ -44,3 +44,28 @@ Route::get('/foundation-array', function () {
       ]
     );
 });
+
+//single vs all actions
+Route::get('/todos', function () {
+  return View::make('todos');
+});
+
+Route::get('/todos/{id}', function ($id) {
+  return View::make('todos-single')->withId($id);
+});
+
+
+//restful
+/*
+ * /todo = all
+ * /todo/1 = show
+ * /todo/1/edit = edit and replace
+ * /todo/1/create = create
+ */
+
+//create manually
+Route::get('/todolist', 'TodoListController@index');
+Route::get('/todolist/{id}', 'TodoListController@show');
+
+//creates all restful pattern for TodoListController
+Route::resource('todo','TodoListController');

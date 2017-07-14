@@ -4,8 +4,8 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Foundation | Welcome</title>
-        <link rel="stylesheet" href="css/foundation.css" />
-        <script src="css/normalize.css"></script>
+        <link rel="stylesheet" href="{{ asset('css/foundation.css') }}" />
+        <script src="{{ asset('css/normalize.css') }}"></script>
     </head>
 
 <body>
@@ -42,8 +42,9 @@
         </div>
     </footer>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/foundation.js"></script>
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/foundation.js') }}"></script>
+
     <script>
       $(document).foundation();
     </script>

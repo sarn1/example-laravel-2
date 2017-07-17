@@ -12,10 +12,10 @@
 */
 
 Route::get('/', function () {
-  return View::make('welcome',$data);
+  // return View::make('welcome',$data);
   // alternative syntax
-  // return View::make('hello')->with('name','friend');
-  //return View::make('hello')->withName('friend'); <-- withVariableName
+  return View::make('hello')->with('name','friend');
+  // return View::make('hello')->withName('friend'); <-- withVariableName
 });
 
 Route::get('/hello/{name?}', function ($name = 'world') {
@@ -69,3 +69,8 @@ Route::get('/todolist/{id}', 'TodoListController@show');
 
 //creates all restful pattern for TodoListController
 Route::resource('todo','TodoListController');
+
+//test db
+Route::get('/db', function () {
+  return DB::select('select database();');
+});

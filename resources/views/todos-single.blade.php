@@ -1,4 +1,4 @@
 @extends('layouts.main')
 @section('content')
-	<h1>Todos Single {{{ $id }}}!</h1>
+	<h1>Todos Single {{{ $list->name }}}!</h1>
 @stop

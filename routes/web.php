@@ -70,6 +70,7 @@ Route::get('/todos/{id}', function ($id) {
 
 //create manually
 Route::get('/todolist', 'TodoListController@index');
+Route::get('/todolist/create', 'TodoListController@create');
 Route::get('/todolist/{id}', 'TodoListController@show');
 
 //creates all restful pattern for TodoListController

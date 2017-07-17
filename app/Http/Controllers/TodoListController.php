@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Html\HtmlFacade;
 
-
 class TodoListController extends Controller
 {
   /**
@@ -16,7 +15,8 @@ class TodoListController extends Controller
    */
   public function index()
   {
-    return View::make('todos');
+    $todo_lists = \App\TodoList::all();
+    return View::make('todos')->with('todo_lists', $todo_lists);
   }
 
   /**
@@ -26,7 +26,10 @@ class TodoListController extends Controller
    */
   public function create()
   {
-    //
+    $list = new \App\TodoList();
+    $list->name = "Another List";
+    $list->save();
+    return "Created A New List!";
   }
 
 
@@ -49,7 +52,9 @@ class TodoListController extends Controller
    */
   public function show($id)
   {
-    return View::make('todos-single')->withId($id);
+    //if fail there will be an exception that you can handle
+    $list = \App\TodoList::findOrFail($id);
+    return View::make('todos-single')->with('list', $list);
   }
 
 

@@ -12,10 +12,15 @@
 */
 
 Route::get('/', function () {
-  // return View::make('welcome',$data);
+  $data = [
+    'name'=>'jane'
+    , 'email'=>'jane@jane.com'
+  ];
+  return View::make('welcome',$data);
+
   // alternative syntax
-  return View::make('hello')->with('name','friend');
-  // return View::make('hello')->withName('friend'); <-- withVariableName
+  // return View::make('welcome')->with('name','friend');
+  // return View::make('welcome')->withName('friend'); <-- withVariableName
 });
 
 Route::get('/hello/{name?}', function ($name = 'world') {
@@ -72,5 +77,24 @@ Route::resource('todo','TodoListController');
 
 //test db
 Route::get('/db', function () {
-  return DB::select('select database();');
+
+  // Query Builders: https://laravel.com/docs/5.4/queries
+
+  //return DB::select('select database();');
+  //return DB::select('show tables;');
+
+  // select *
+  //return DB::table('todo_lists')->get();
+
+  // insert
+  /*
+  DB::table('todo_lists')->insert([
+    'name' => 'Your List'
+  ]);
+  return DB::table('todo_lists')->get();
+  */
+
+  // chaining
+  $r = DB::table('todo_lists')->where('name','Your List')->first();
+  return $r->name;
 });
